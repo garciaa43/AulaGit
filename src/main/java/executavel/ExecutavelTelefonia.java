@@ -12,16 +12,16 @@ public class ExecutavelTelefonia {
 	public static void main(String[] args) {
 		
 		List<Telefone> telefonesDoPele;
-		Endereco endereco1 = new Endereco("800098803", "Mauro Ramos", "10", "Centro", "Florianopolis", "SC");
+		Endereco endereco1 = new Endereco(1, "800098803", "Mauro Ramos", "10", "Centro", "Florianopolis", "SC");
 		
 		
 		List<Telefone> telefonesDoSocrates = new ArrayList<Telefone>();
-		Telefone telefone1 = new Telefone("48", "32323705", true, false);
+		Telefone telefone1 = new Telefone(1, 1,"48", "32323705", true, false);
 		telefonesDoSocrates.add(telefone1);
-		telefonesDoSocrates.add(new Telefone("48", "32324567", true, true));
+		telefonesDoSocrates.add(new Telefone(1, 1,"48", "32324567", true, true));
 		
-		Cliente socrates = new Cliente("Socrates Brasileiro", "4324322132132", telefonesDoSocrates, true, null);
-		Cliente pele = new Cliente("Edson Arantes", "11111113243", null, true, endereco1);
+		Cliente socrates = new Cliente(1, "Socrates Brasileiro", "4324322132132", telefonesDoSocrates, true, null);
+		Cliente pele = new Cliente(1, "Edson Arantes", "11111113243", null, true, endereco1);
 		
 		List<Cliente> clientes = new ArrayList<Cliente>();
 		clientes.add(pele);
