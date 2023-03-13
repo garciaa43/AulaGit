@@ -33,7 +33,7 @@ public class ExecutavelTelefonia {
 		Telefone telefone2 = new Telefone("48", "984591053", true, false);
 		TelefoneDAO telefones = new TelefoneDAO();
 		//telefones.inserir(telefone2);
-		telefones.deletar(telefone1);
+		telefones.deletar(telefone2);
 		/*
 		
 		telefones.inserir(telefone1);
