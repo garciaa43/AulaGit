@@ -15,6 +15,16 @@ public class Cliente {
 		
 	}
 	
+	public Cliente(String nome, String cpf, List<Telefone> telefones, boolean ativo, Endereco endereco) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.telefones = telefones;
+		this.ativo = ativo;
+		this.endereco = endereco;
+	}
+	
 	public Cliente(int id, String nome, String cpf, List<Telefone> telefones, boolean ativo, Endereco endereco) {
 		super();
 		this.id = id;

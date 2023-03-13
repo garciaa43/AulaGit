@@ -3,7 +3,7 @@ package model.vo.telefonia;
 public class Endereco {
 
 	//Atributos
-	private int id;
+	private Integer id;
 	private String cep;
 	private String rua;
 	private String numero;
@@ -18,10 +18,18 @@ public class Endereco {
 		
 	}
 	
+	public Endereco(String cep, String rua, String numero, String bairro, String cidade, String estado) {
+		super();
+		this.cep = cep;
+		this.rua = rua;
+		this.numero = numero;
+		this.bairro = bairro;
+		this.cidade = cidade;
+		this.estado = estado;
+	}
 
 
-
-	public Endereco(int id, String cep, String rua, String numero, String bairro, String cidade, String estado) {
+	public Endereco(Integer id, String cep, String rua, String numero, String bairro, String cidade, String estado) {
 		super();
 		this.id = id;
 		this.cep = cep;
@@ -37,12 +45,12 @@ public class Endereco {
 	//Métodos getter e setters
 	
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	

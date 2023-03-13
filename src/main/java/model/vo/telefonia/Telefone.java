@@ -13,6 +13,14 @@ public class Telefone {
 		
 	}
 	
+	public Telefone(String ddd, String numero, boolean ativo, boolean movel) {
+		super();
+		this.ddd = ddd;
+		this.numero = numero;
+		this.ativo = ativo;
+		this.movel = movel;
+	}
+	
 	public Telefone(Integer idCliente, Integer id, String ddd, String numero, boolean ativo, boolean movel) {
 		super();
 		this.idCliente = idCliente;
