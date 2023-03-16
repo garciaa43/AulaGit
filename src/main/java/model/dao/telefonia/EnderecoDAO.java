@@ -107,7 +107,7 @@ public class EnderecoDAO {
 				enderecoConsultado.setEstado(resultado.getString("estado"));
 			}
 			
-			enderecoConsultado = new Endereco();
+			
 			
 		} catch (SQLException e) {
 			System.out.println("Erro ao buscar endereço por id: " + id + "Causa: " + e.getMessage());
@@ -116,27 +116,28 @@ public class EnderecoDAO {
 			Banco.closePreparedStatement(query);
 		}
 		
-		return null;
+		return enderecoConsultado;
 	}
 	
 	public boolean excluir(int id) {
 		boolean excluiu = false;
 		
 		Connection conexao = Banco.getConnection();
-		String sql = " DELETE FROM ENDERECO WHERE ID = ? ";
+		String sql = " DELETE FROM ENDERECO "
+				   + " WHERE ID = ? ";
 		PreparedStatement query = Banco.getPreparedStatement(conexao, sql);
 		try {
 			query.setInt(1, id);
 			
 			int quantidadeLinhasAtualizadas = query.executeUpdate();
 			excluiu = quantidadeLinhasAtualizadas > 0;
-		} catch(SQLException e) {
-			System.out.println("Erro ao deletar o endereço. Causa: " + e.getMessage());
-		} finally {
-			Banco.closeConnection(conexao);
+		} catch (SQLException excecao) {
+			System.out.println("Erro ao excluir endereço. "
+					+ "\n Causa: " + excecao.getMessage());
+		}finally {
 			Banco.closePreparedStatement(query);
+			Banco.closeConnection(conexao);
 		}
 		return excluiu;
 	}
-	
 }

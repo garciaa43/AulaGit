@@ -27,16 +27,41 @@ public class ExecutavelTelefonia {
 			System.out.println("Erro ao cadastrar");
 		}
 		 */
-		 EnderecoDAO enderecos = new EnderecoDAO();
-		 Endereco endereco1 = new Endereco(1,"800093", "Rua dos rubis", "10", "Centro", "Florianopolis", "SC" );
-		 boolean atualizou = enderecos.atualizar(endereco1);
-		 boolean excluiu = enderecos.excluir(9);
-		 if(excluiu) {
+		
+		/*EnderecoDAO enderecos = new EnderecoDAO(); 
+		 if(enderecos.excluir(3)) {
 			 System.out.println("Excluido com sucesso");
 		 } else {
-			 System.out.println("Não deu para excluir");
+			 System.out.println("Erro ao excluir");
 		 }
-		 
+		*/
+		EnderecoDAO enderecos = new EnderecoDAO(); 
+		TelefoneDAO telefones = new TelefoneDAO();
+		
+		Telefone telefoneQueExiste = telefones.consultarPorId(2);
+		System.out.println(telefoneQueExiste);
+		telefoneQueExiste.setDdd("47");
+		boolean atualizou = telefones.atualizar(telefoneQueExiste);
+		if(atualizou) {
+			System.out.println("Telefone atualizado");
+		} else {
+			System.out.println("Erro ao atualizar");
+		}
+		//Telefone telefone1 = new Telefone("48", "32323705", false, false);
+		//Telefone telefone5 = new Telefone("48", "54586957", false, false);
+		//telefones.inserir(telefone5);
+		//telefone5.setDdd("46");
+		//boolean atualizou = telefones.atualizar(telefone5);
+		
+		//telefone5 = telefones.consultarPorId(2);
+		//System.out.println(telefone5);
+		
+		//Telefone telefoneQueExiste = telefones.consultarPorId(3);
+		//System.out.println(telefoneQueExiste);
+		
+		Endereco enderecoQueExiste = enderecos.consultarPorId(1);
+		System.out.println(enderecoQueExiste);
+		
 		 /*
 		Telefone telefone1 = new Telefone("48", "32323705", false, false);
 		Telefone telefone2 = new Telefone("48", "984591053", true, false);
