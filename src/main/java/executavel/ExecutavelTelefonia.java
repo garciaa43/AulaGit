@@ -15,11 +15,11 @@ public class ExecutavelTelefonia {
 		
 		
 		
-		
-		/*List<Telefone> telefonesDoPele;
+		/*
+		List<Telefone> telefonesDoPele;
 		Endereco endereco1 = new Endereco("800093", "Mauro Ramos", "10", "Centro", "Florianopolis", "SC");
-		 *
-		 * EnderecoDAO enderecos = new EnderecoDAO();
+		
+		  EnderecoDAO enderecos = new EnderecoDAO();
 		enderecos.inserir(endereco1);
 		 if(endereco1.getId() != null) {
 			System.out.println("Novo endereço cadastrado");
@@ -27,31 +27,40 @@ public class ExecutavelTelefonia {
 			System.out.println("Erro ao cadastrar");
 		}
 		 */
-		
-		
+		 EnderecoDAO enderecos = new EnderecoDAO();
+		 Endereco endereco1 = new Endereco(1,"800093", "Rua dos rubis", "10", "Centro", "Florianopolis", "SC" );
+		 boolean atualizou = enderecos.atualizar(endereco1);
+		 boolean excluiu = enderecos.excluir(9);
+		 if(excluiu) {
+			 System.out.println("Excluido com sucesso");
+		 } else {
+			 System.out.println("Não deu para excluir");
+		 }
+		 
+		 /*
 		Telefone telefone1 = new Telefone("48", "32323705", false, false);
 		Telefone telefone2 = new Telefone("48", "984591053", true, false);
 		TelefoneDAO telefones = new TelefoneDAO();
 		//telefones.inserir(telefone2);
 		telefones.deletar(telefone2);
-		/*
+		
 		
 		telefones.inserir(telefone1);
+		*/
 		
 		
 		
 		/*
-		
 		if(telefone1.getId() != null) {
 			System.out.println("Novo endereço cadastrado");
 		} else {
 			System.out.println("Erro ao cadastrar");
 		}
 		
-		/*
+		
 		  List<Telefone> telefonesDoSocrates = new ArrayList<Telefone>();
-		Telefone telefone1 = new Telefone("48", "32323705", true, false);
-		telefonesDoSocrates.add(telefone1);
+		Telefone telefone11 = new Telefone("48", "32323705", true, false);
+		telefonesDoSocrates.add(telefone11);
 		telefonesDoSocrates.add(new Telefone("48", "32324567", true, true));
 		
 		Cliente pele = new Cliente("Edson Arantes", "11111113243", null, true, endereco1);
@@ -65,8 +74,8 @@ public class ExecutavelTelefonia {
 		
 		for(Cliente c: clientes) {
 			System.out.println(c.toString());
-		 */
-		
+		 
+		*/
 		}
 	}
 
