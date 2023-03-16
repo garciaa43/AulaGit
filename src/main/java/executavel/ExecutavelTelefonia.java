@@ -43,12 +43,8 @@ public class ExecutavelTelefonia {
 		TelefoneDAO telefones = new TelefoneDAO();
 		//telefones.inserir(telefone2);
 		telefones.deletar(telefone2);
-		
-		
 		telefones.inserir(telefone1);
 		*/
-		
-		
 		
 		/*
 		if(telefone1.getId() != null) {
@@ -57,12 +53,10 @@ public class ExecutavelTelefonia {
 			System.out.println("Erro ao cadastrar");
 		}
 		
-		
-		  List<Telefone> telefonesDoSocrates = new ArrayList<Telefone>();
+		List<Telefone> telefonesDoSocrates = new ArrayList<Telefone>();
 		Telefone telefone11 = new Telefone("48", "32323705", true, false);
 		telefonesDoSocrates.add(telefone11);
 		telefonesDoSocrates.add(new Telefone("48", "32324567", true, true));
-		
 		Cliente pele = new Cliente("Edson Arantes", "11111113243", null, true, endereco1);
 		Cliente socrates = new Cliente("Socrates Brasileiro", "4324322132132", telefonesDoSocrates, true, null);
 		
