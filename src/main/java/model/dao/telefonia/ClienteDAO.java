@@ -11,6 +11,11 @@ import model.vo.telefonia.Endereco;
 
 public class ClienteDAO {
 
+	public Cliente inserir(Cliente c) {
+		
+		return c;
+	}
+	
 	public Cliente consultarPorId(int id) {
 		Cliente clienteBuscado = null;
 		Connection conexao = Banco.getConnection();
@@ -32,6 +37,9 @@ public class ClienteDAO {
 				EnderecoDAO enderecoDAO = new EnderecoDAO();
 				Endereco endereco = enderecoDAO.consultarPorId(idEnderecoDoCliente);
 				clienteBuscado.setEndereco(endereco);
+				
+				TelefoneDAO telefoneDAO = new TelefoneDAO();
+				//clienteBuscado.setTelefones(telefoneDAO.consultarPorIdCliente(clienteBuscado.getId()));
 			}
 		} catch (SQLException e) {
 			System.out.println("Erro ao buscar cliente com id " + id + " Causa: " + e.getMessage());
@@ -42,4 +50,26 @@ public class ClienteDAO {
 		return clienteBuscado;	
 	}
 	
+	
+	public boolean cpfJaUtilizado(String cpfBuscado) {
+		Boolean cpfJaUtilizado = false;
+		Connection conexao = Banco.getConnection();
+		String sql = " select count(*) from cliente where cpf = ? ";
+		PreparedStatement query = Banco.getPreparedStatement(conexao, sql);
+		try {
+			
+			query.setString(1, cpfBuscado);
+			
+			ResultSet resultado = query.executeQuery();
+			if(resultado.next()) {
+				cpfJaUtilizado = resultado.getInt(1) > 0;
+			}
+		} catch (SQLException e) {
+			System.out.println("Erro ao verificar o uso do CPF Causa: " + e.getMessage());
+		} finally {
+			Banco.closePreparedStatement(query);
+			Banco.closeConnection(conexao);
+		}
+		return cpfJaUtilizado;	
+	}
 }

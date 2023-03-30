@@ -9,11 +9,11 @@ import model.vo.vacinas.Vacina;
 public class ExecutavelVacina {
 
 	public static void main(String[] args) {
-		//Pessoa pessoa1 = new Pessoa("William", "24/02/2000", "M", "13245687955", TipoPessoa.PESQUISADOR, 5.5);
+		Pessoa pessoa1 = new Pessoa("William", "24/02/2000", "M", "13245687955", TipoPessoa.PESQUISADOR, 5.5);
 		PessoaDAO pessoas = new PessoaDAO();
-		//pessoas.inserir(pessoa1);
+		pessoas.inserir(pessoa1);
 		Pessoa pessoa2 = new Pessoa("Thiago", "20/07/1993", "M", "14356789055", TipoPessoa.PUBLICO, 7.8);
-		//pessoas.inserir(pessoa2);
+		pessoas.inserir(pessoa2);
 		//pessoa2.setNome("Gabriel");
 		//Boolean atualizou = pessoas.atualizar(pessoa2);
 		//pessoas.consultarTodasPessoasDAO();
@@ -34,10 +34,10 @@ public class ExecutavelVacina {
 		}
 		System.out.println(vacina1);
 		*/
-		Vacina vacinaQueExiste = vacinas.consultarPorId(1);
-		System.out.println(vacinaQueExiste);
-		
-		System.out.println(vacinas.consultarTodos());
+//		Vacina vacinaQueExiste = vacinas.consultarPorId(1);
+//		System.out.println(vacinaQueExiste);
+//		
+//		System.out.println(vacinas.consultarTodos());
 	}
 
 }

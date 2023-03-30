@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.dao.Banco;
 import model.vo.telefonia.Telefone;
@@ -114,4 +116,11 @@ public class TelefoneDAO {
 		}
 		return excluiu;
 	}
+
+//	public List<Telefone> consultarPorIdCliente(int id) {
+//		List<Telefone> telefones = new ArrayList<Telefone>();
+//		Connection conexao = Banco.getConnection();
+//		String sql = " SELECT "
+//		return telefones;
+//	}
 }
