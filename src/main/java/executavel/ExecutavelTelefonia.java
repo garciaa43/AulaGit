@@ -3,8 +3,16 @@ package executavel;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
+import controller.ClienteController;
+import model.bo.ClienteBO;
 import model.dao.telefonia.EnderecoDAO;
 import model.dao.telefonia.TelefoneDAO;
+import model.exception.CampoInvalidoExcpetion;
+import model.exception.CpfAlteradoException;
+import model.exception.CpfJaUtilizadoException;
+import model.exception.EnderecoInvalidoException;
 import model.vo.telefonia.Cliente;
 import model.vo.telefonia.Endereco;
 import model.vo.telefonia.Telefone;
@@ -58,9 +66,22 @@ public class ExecutavelTelefonia {
 		
 		//Telefone telefoneQueExiste = telefones.consultarPorId(3);
 		//System.out.println(telefoneQueExiste);
-		
+		List<Telefone> telefonesDoSocrates = new ArrayList<Telefone>();
+		Telefone telefone11 = new Telefone("48", "32323705", true, false);
+		telefonesDoSocrates.add(telefone11);
+		Cliente socrates = new Cliente("Socrates Brasileiro", "2132132", telefonesDoSocrates, true, null);
 		Endereco enderecoQueExiste = enderecos.consultarPorId(1);
 		System.out.println(enderecoQueExiste);
+		
+		ClienteBO clienteBO = new ClienteBO();
+		
+		Cliente novoCliente = new Cliente();
+		ClienteController controladorDeClientes = new ClienteController();
+		try {
+			controladorDeClientes.inserir(novoCliente);
+		} catch (CpfJaUtilizadoException | EnderecoInvalidoException | CampoInvalidoExcpetion e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+		}
 		
 		 /*
 		Telefone telefone1 = new Telefone("48", "32323705", false, false);

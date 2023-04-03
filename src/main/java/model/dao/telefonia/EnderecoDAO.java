@@ -22,17 +22,16 @@ public class EnderecoDAO {
 	 * @return o telefone inserido com a chave primária gerada
 	 */
 	
-	public Endereco inserir(Endereco  novoEndereco) {
+	public Endereco inserir(Endereco novoEndereco) {
 		//Conectar ao banco
 		Connection conexao = Banco.getConnection();
-		String sql = " INSERT INTO ENDERECO (RUA, CEP, BAIRRO, CIDADE, ESTADO, NUMERO) "
-				+ " VALUES (?, ?, ?, ?, ?, ?) ";
-		
+		String sql =  " INSERT INTO ENDERECO (RUA, CEP, BAIRRO, "
+					+ " CIDADE, ESTADO, NUMERO) "
+				    + " VALUES (?,?,?,?,?,?) ";
+
 		PreparedStatement query = Banco.getPreparedStatementWithPk(conexao, sql);
-		
-		
-		//Executar o INSERT 
-		
+			
+		//executar o INSERT
 		try {
 			query.setString(1, novoEndereco.getRua());
 			query.setString(2, novoEndereco.getCep());
@@ -49,44 +48,47 @@ public class EnderecoDAO {
 			}
 			
 		} catch (SQLException e) {
-			System.out.println("Erro ao inserir o endereço. Causa: " + e.getMessage());
-		} finally {
+			System.out.println("Erro ao inserir endereço. "
+					+ "\nCausa: " + e.getMessage());
+		}finally {
+			//Fechar a conexão
 			Banco.closePreparedStatement(query);
 			Banco.closeConnection(conexao);
 		}
-		
-		
-		
 		
 		return novoEndereco;
 	}
 	
-	public boolean atualizar(Endereco enderecoAtualizado) {
+	public boolean atualizar(Endereco enderecoEditado) {
 		boolean atualizou = false;
 		Connection conexao = Banco.getConnection();
-		String sql = " UPDATE ENDERECO SET CEP = ?, RUA = ?, NUMERO = ?, BAIRRO = ?, CIDADE = ?, ESTADO = ? "
-				+ " WHERE ID = ? ";
+		String sql = " UPDATE ENDERECO "
+				   + " SET CEP = ?, RUA = ?, NUMERO = ?, "
+				   + "     BAIRRO = ?, CIDADE = ?, ESTADO = ? "
+				   + " WHERE ID = ? ";
 		PreparedStatement query = Banco.getPreparedStatement(conexao, sql);
 		try {
-			query.setString(1, enderecoAtualizado.getCep());
-			query.setString(2, enderecoAtualizado.getRua());
-			query.setString(3, enderecoAtualizado.getNumero());
-			query.setString(4, enderecoAtualizado.getBairro());
-			query.setString(5, enderecoAtualizado.getCidade());
-			query.setString(6, enderecoAtualizado.getEstado());	
-			query.setInt(7, enderecoAtualizado.getId());
-			int quantidadeDeLinhasAtualizadas = query.executeUpdate();
-			atualizou = quantidadeDeLinhasAtualizadas > 0;
-		} catch(SQLException e) {
-			System.out.println("Erro ao atualizar o endereço. Causa: " + e.getMessage());
+			query.setString(1, enderecoEditado.getCep());
+			query.setString(2, enderecoEditado.getRua());
+			query.setString(3, enderecoEditado.getNumero());
+			query.setString(4, enderecoEditado.getBairro());
+			query.setString(5, enderecoEditado.getCidade());
+			query.setString(6, enderecoEditado.getEstado());
+			query.setInt(7, enderecoEditado.getId());
+			
+			int quantidadeLinhasAtualizadas = query.executeUpdate();
+			atualizou = quantidadeLinhasAtualizadas > 0;
+		} catch (SQLException excecao) {
+			System.out.println("Erro ao atualizar endereço. "
+					+ "\n Causa: " + excecao.getMessage());
 		}finally {
-			Banco.closeConnection(conexao);
 			Banco.closePreparedStatement(query);
+			Banco.closeConnection(conexao);
 		}
 		
 		return atualizou;
 	}
-
+	
 	public Endereco consultarPorId(int id) {
 		Endereco enderecoConsultado = null;
 		Connection conexao = Banco.getConnection();
@@ -110,7 +112,8 @@ public class EnderecoDAO {
 		}
 		
 		return enderecoConsultado;
-	}	
+	}
+	
 	public boolean excluir(int id) {
 		boolean excluiu = false;
 		
