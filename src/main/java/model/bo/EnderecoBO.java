@@ -12,9 +12,15 @@ public class EnderecoBO {
 	private EnderecoDAO dao = new EnderecoDAO();
 	
 	public Endereco inserir(Endereco novoEndereco) {
+		validarCampoesObrigatorios(novoEndereco);
 		return dao.inserir(novoEndereco);
 	}
 	
+	private void validarCampoesObrigatorios(Endereco novoEndereco) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public boolean atualizar(Endereco enderecoAlterado){
 		return dao.atualizar(enderecoAlterado);
 	}
