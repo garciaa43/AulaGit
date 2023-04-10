@@ -108,9 +108,9 @@ public class Endereco {
 				+ cidade + ", estado=" + estado + "]";
 	}
 	
-	
-	
-	//Métodos
+	public String getEnderecoResumido() {
+		return rua + "nº" + numero + ", " + bairro + ", " + cidade + "/" + estado;
+	}
 	
 	
 }

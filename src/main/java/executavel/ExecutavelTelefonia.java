@@ -9,7 +9,7 @@ import controller.ClienteController;
 import model.bo.ClienteBO;
 import model.dao.telefonia.EnderecoDAO;
 import model.dao.telefonia.TelefoneDAO;
-import model.exception.CampoInvalidoExcpetion;
+import model.exception.CampoInvalidoException;
 import model.exception.CpfAlteradoException;
 import model.exception.CpfJaUtilizadoException;
 import model.exception.EnderecoInvalidoException;
@@ -79,7 +79,7 @@ public class ExecutavelTelefonia {
 		ClienteController controladorDeClientes = new ClienteController();
 		try {
 			controladorDeClientes.inserir(novoCliente);
-		} catch (CpfJaUtilizadoException | EnderecoInvalidoException | CampoInvalidoExcpetion e) {
+		} catch (CpfJaUtilizadoException | EnderecoInvalidoException | CampoInvalidoException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 		}
 		

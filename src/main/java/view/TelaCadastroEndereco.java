@@ -3,29 +3,38 @@ package view;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
+import controller.EnderecoController;
+import model.exception.CampoInvalidoException;
 import model.vo.telefonia.Endereco;
-
-import java.awt.Label;
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaCadastroEndereco {
 
 	private JFrame frmCadastroDeEndereco;
-	private Label lbCep;
-	private Label lbRua;
-	private Label lbBairro;
-	private Label lbNumero;
-	private Label lbCidade;
-	private Label lbEstado;
+	private JTextField txtCep;
+	private JTextField txtRua;
+	private JTextField txtBairro;
+	private JTextField txtCidade;
+	private JTextField txtNumero;
+	private JLabel lblRua;
+	private JLabel lblBairro;
+	private JLabel lblCep;
+	private JLabel lblCidade;
+	private JLabel lblNumero;
+	private JLabel lblEstado;
+	private JButton btnSalvar;
+	private JComboBox cbEstado;
 	
 	//TODO chamar API ou backend futuramente
-	private String[] estados = {"Paraná", "Rio Grande do Sul", "Santa Catarina"};
+	private String[] estados = {"PR", "RS", "SC"};
 
 	/**
 	 * Launch the application.
@@ -56,69 +65,90 @@ public class TelaCadastroEndereco {
 	private void initialize() {
 		frmCadastroDeEndereco = new JFrame();
 		frmCadastroDeEndereco.setTitle("Cadastro de endereço");
-		frmCadastroDeEndereco.setBounds(100, 100, 400, 280);
+		frmCadastroDeEndereco.setBounds(100, 100, 380, 240);
 		frmCadastroDeEndereco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCadastroDeEndereco.getContentPane().setLayout(null);
 		
-		lbCep = new Label("CEP:");
-		lbCep.setBounds(15, 15, 36, 14);
-		frmCadastroDeEndereco.getContentPane().add(lbCep);
+		lblCep = new JLabel("CEP:");
+		lblCep.setBounds(15, 15, 45, 14);
+		frmCadastroDeEndereco.getContentPane().add(lblCep);
 		
-		lbRua = new Label("Rua:");
-		lbRua.setBounds(15, 40, 36, 22);
-		frmCadastroDeEndereco.getContentPane().add(lbRua);
+		txtCep = new JTextField();
+		txtCep.setBounds(60, 12, 300, 20);
+		frmCadastroDeEndereco.getContentPane().add(txtCep);
+		txtCep.setColumns(10);
 		
-		TextField textCep = new TextField();
-		textCep.setBounds(62, 10, 306, 22);
-		frmCadastroDeEndereco.getContentPane().add(textCep);
+		lblRua = new JLabel("Rua:");
+		lblRua.setBounds(15, 40, 45, 14);
+		frmCadastroDeEndereco.getContentPane().add(lblRua);
 		
-		lbBairro = new Label("Bairro:");
-		lbBairro.setBounds(15, 65, 36, 22);
-		frmCadastroDeEndereco.getContentPane().add(lbBairro);
+		lblBairro = new JLabel("Bairro:");
+		lblBairro.setBounds(15, 65, 45, 14);
+		frmCadastroDeEndereco.getContentPane().add(lblBairro);
 		
-		lbNumero = new Label("Número:");
-		lbNumero.setBounds(15, 90, 46, 22);
-		frmCadastroDeEndereco.getContentPane().add(lbNumero);
+		lblCidade = new JLabel("Cidade:");
+		lblCidade.setBounds(15, 90, 45, 14);
+		frmCadastroDeEndereco.getContentPane().add(lblCidade);
 		
-		lbCidade = new Label("Cidade:");
-		lbCidade.setBounds(15, 115, 46, 22);
-		frmCadastroDeEndereco.getContentPane().add(lbCidade);
+		lblNumero = new JLabel("Número:");
+		lblNumero.setBounds(15, 115, 45, 14);
+		frmCadastroDeEndereco.getContentPane().add(lblNumero);
 		
-		lbEstado = new Label("Estado:");
-		lbEstado.setBounds(15, 140, 46, 22);
-		frmCadastroDeEndereco.getContentPane().add(lbEstado);
+		lblEstado = new JLabel("Estado:");
+		lblEstado.setBounds(15, 140, 45, 14);
+		frmCadastroDeEndereco.getContentPane().add(lblEstado);
 		
-		TextField textRua = new TextField();
-		textRua.setBounds(62, 35, 306, 22);
-		frmCadastroDeEndereco.getContentPane().add(textRua);
+		txtRua = new JTextField();
+		txtRua.setBounds(60, 37, 300, 20);
+		frmCadastroDeEndereco.getContentPane().add(txtRua);
+		txtRua.setColumns(10);
 		
-		TextField textBairro = new TextField();
-		textBairro.setBounds(62, 65, 306, 22);
-		frmCadastroDeEndereco.getContentPane().add(textBairro);
+		txtBairro = new JTextField();
+		txtBairro.setColumns(10);
+		txtBairro.setBounds(60, 62, 300, 20);
+		frmCadastroDeEndereco.getContentPane().add(txtBairro);
 		
-		TextField textNumero = new TextField();
-		textNumero.setBounds(62, 90, 306, 22);
-		frmCadastroDeEndereco.getContentPane().add(textNumero);
+		txtCidade = new JTextField();
+		txtCidade.setColumns(10);
+		txtCidade.setBounds(60, 87, 300, 20);
+		frmCadastroDeEndereco.getContentPane().add(txtCidade);
 		
-		TextField textCidade = new TextField();
-		textCidade.setBounds(62, 115, 306, 22);
-		frmCadastroDeEndereco.getContentPane().add(textCidade);
+		txtNumero = new JTextField();
+		txtNumero.setColumns(10);
+		txtNumero.setBounds(60, 112, 300, 20);
+		frmCadastroDeEndereco.getContentPane().add(txtNumero);
 		
-		JComboBox cbEstado = new JComboBox(estados);
+		cbEstado = new JComboBox(estados);
 		cbEstado.setToolTipText("Selecione");
 		cbEstado.setSelectedIndex(-1);
-		cbEstado.setBounds(62, 140, 306, 22);
+		cbEstado.setBounds(60, 136, 300, 22);
 		frmCadastroDeEndereco.getContentPane().add(cbEstado);
 		
-		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(153, 173, 89, 23);
-		frmCadastroDeEndereco.getContentPane().add(btnSalvar);
+		btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Endereco endereco = new Endereco();
 				endereco.setCep(txtCep.getText());
+				endereco.setRua(txtRua.getText());
+				endereco.setNumero(txtNumero.getText());
+				endereco.setCidade(txtCidade.getText());
+				endereco.setBairro(txtBairro.getText());
+				endereco.setEstado((String) cbEstado.getSelectedItem());
+						
+				EnderecoController controller = new EnderecoController();
+				try {
+					controller.inserir(endereco);
+				} catch (CampoInvalidoException e) {
+					JOptionPane.showMessageDialog(null, 
+							"Preencha os seguintes campos: \n" + e.getMessage(), 
+							"Atenção", JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
+		btnSalvar.setBounds(130, 170, 100, 23);
+		frmCadastroDeEndereco.getContentPane().add(btnSalvar);
 		
+
+	
 	}
 }
