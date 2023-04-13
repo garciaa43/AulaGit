@@ -102,14 +102,15 @@ public class Endereco {
 		this.estado = estado;
 	}
 
-	@Override
+	
 	public String toString() {
-		return "Endereco [cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", cidade="
-				+ cidade + ", estado=" + estado + "]";
+//		return "cep: " + cep + ", rua: " + rua + ", numero: " + numero + ", bairro: " + bairro + ", cidade: "
+//				+ cidade + ", estado:" + estado;
+		return getEnderecoResumido();
 	}
 	
 	public String getEnderecoResumido() {
-		return rua + "nº" + numero + ", " + bairro + ", " + cidade + "/" + estado;
+		return rua + " nº" + numero + ", " + bairro + ", " + cidade + "/" + estado;
 	}
 	
 	

@@ -17,11 +17,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 import model.exception.CampoInvalidoException;
+import model.exception.CpfJaUtilizadoException;
+import model.exception.EnderecoInvalidoException;
 import controller.ClienteController;
 import controller.EnderecoController;
 import model.dao.telefonia.EnderecoDAO;
 import model.vo.telefonia.Cliente;
 import model.vo.telefonia.Endereco;
+import java.awt.Color;
 
 public class TelaCadastroCliente {
 
@@ -64,8 +67,9 @@ public class TelaCadastroCliente {
 	 */
 	private void initialize() {
 		frmTelaDeCadastramento = new JFrame();
+		frmTelaDeCadastramento.getContentPane().setBackground(new Color(128, 128, 255));
 		frmTelaDeCadastramento.setTitle("Tela de cadastramento de cliente");
-		frmTelaDeCadastramento.setBounds(100, 100, 350, 260);
+		frmTelaDeCadastramento.setBounds(100, 100, 365, 260);
 		frmTelaDeCadastramento.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTelaDeCadastramento.getContentPane().setLayout(null);
 		
@@ -89,7 +93,7 @@ public class TelaCadastroCliente {
 			frmTelaDeCadastramento.getContentPane().add(lblCPF);
 			
 			txtNome = new JTextField();
-			txtNome.setBounds(54, 9, 243, 20);
+			txtNome.setBounds(54, 9, 285, 20);
 			frmTelaDeCadastramento.getContentPane().add(txtNome);
 			txtNome.setColumns(10);
 			
@@ -102,28 +106,42 @@ public class TelaCadastroCliente {
 			frmTelaDeCadastramento.getContentPane().add(lblEndereco);
 			
 			EnderecoController controller = new EnderecoController();
-			enderecos = controller.consultarTodos();
+			List<Endereco> enderecosCadastrados = controller.consultarTodos();
 			
-			cbEndereco = new JComboBox();
-			cbEndereco.setBounds(79, 93, 233, 22);
+			cbEndereco = new JComboBox(enderecosCadastrados.toArray());
+			cbEndereco.setSelectedIndex(-1);
+			cbEndereco.setBounds(79, 93, 260, 22);
 			frmTelaDeCadastramento.getContentPane().add(cbEndereco);
 			
 			JButton btnSalvar = new JButton("Salvar");
-			btnSalvar.setBounds(119, 171, 89, 23);
-			frmTelaDeCadastramento.getContentPane().add(btnSalvar);
 			btnSalvar.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					Cliente cliente = new Cliente();
-					cliente.setNome(txtNome.getText());
-					cliente.setCpf(formattedTxtCPF.getText());
-					
-					ClienteController clienteController = new ClienteController();
-				} try {
-					
-				} catch (CampoInvalidoException e) {
-					
+				public void actionPerformed(ActionEvent e) {
+					Cliente novoCliente = new Cliente();
+					novoCliente.setNome(txtNome.getText());
+					try {
+						String cpfSemMascara = (String) mascaraCpf.stringToValue(formattedTxtCPF.getText());
+						novoCliente.setCpf(cpfSemMascara);
+					} catch (ParseException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+					novoCliente.setEndereco((Endereco) cbEndereco.getSelectedItem());
+					ClienteController controller = new ClienteController();
+					try {
+						controller.inserir(novoCliente);
+						
+						JOptionPane.showMessageDialog(null, "Cliente salvo com sucesso!");
+					} catch (CpfJaUtilizadoException | EnderecoInvalidoException | CampoInvalidoException e1) {
+						JOptionPane.showMessageDialog(null, e1.getMessage());
+						e1.printStackTrace();
+					}
 				}
 			});
+			btnSalvar.setBackground(new Color(255, 255, 255));
+			btnSalvar.setBounds(111, 168, 89, 23);
+			btnSalvar.setOpaque(true);
+			frmTelaDeCadastramento.getContentPane().add(btnSalvar);
+			
 		
 	}
 }
