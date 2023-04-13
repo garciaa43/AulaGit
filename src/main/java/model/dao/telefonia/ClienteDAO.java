@@ -211,6 +211,30 @@ public class ClienteDAO {
 		
 		return totalClientesDoEnderecoBuscado;
 	}
+	
+	public List<Cliente> consultarTodosPorId() {
+		List<Cliente> clientes = new ArrayList<Cliente>();
+		Connection conexao = Banco.getConnection();
+		String sql = " select id from cliente ";
+		
+		PreparedStatement query = Banco.getPreparedStatement(conexao, sql);
+		try {
+			ResultSet resultado = query.executeQuery();
+			
+			if(resultado.next()) {
+				Cliente clienteBuscado = montarClienteComResultadoDoBanco(resultado);
+				clientes.add(clienteBuscado);
+			}
+			
+		}catch (Exception e) {
+			System.out.println("Erro ao buscar todos os clientes. \n Causa:" + e.getMessage());
+		}finally {
+			Banco.closePreparedStatement(query);
+			Banco.closeConnection(conexao);
+		}
+		
+		return clientes;
+	}
 }
 
 

@@ -81,4 +81,9 @@ private ClienteDAO dao = new ClienteDAO();
 			throw new EnderecoInvalidoException("Endereço não informado");
 		}
 	}
+
+	public List<Cliente> consultarTodosPorId() {
+		
+		return dao.consultarTodosPorId();
+	}
 }

@@ -80,4 +80,8 @@ public class ClienteController {
 	public List<Cliente> consultarTodos() {
 		return bo.consultarTodos();
 	}
+	
+	public List<Cliente> consultarTodosPorId() {
+		return bo.consultarTodosPorId();
+	}
 }
