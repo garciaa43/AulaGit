@@ -138,6 +138,8 @@ public class TelaCadastroEndereco {
 				EnderecoController controller = new EnderecoController();
 				try {
 					controller.inserir(endereco);
+					
+					JOptionPane.showMessageDialog(null, "Endereço cadastrado com sucesso!");
 				} catch (CampoInvalidoException e) {
 					JOptionPane.showMessageDialog(null, 
 							"Preencha os seguintes campos: \n" + e.getMessage(), 
