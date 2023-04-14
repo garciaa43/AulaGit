@@ -70,7 +70,7 @@ public class TelaCadastroTelefone {
 		frmNovoTelefone.getContentPane().add(lblDdd);
 		
 		txtDdd = new JTextField();
-		txtDdd.setBounds(42, 8, 86, 20);
+		txtDdd.setBounds(72, 8, 161, 20);
 		frmNovoTelefone.getContentPane().add(txtDdd);
 		txtDdd.setColumns(10);
 		
@@ -79,7 +79,7 @@ public class TelaCadastroTelefone {
 		frmNovoTelefone.getContentPane().add(lblNumero);
 		
 		txtNum = new JTextField();
-		txtNum.setBounds(72, 33, 116, 20);
+		txtNum.setBounds(72, 33, 161, 20);
 		frmNovoTelefone.getContentPane().add(txtNum);
 		txtNum.setColumns(10);
 		
@@ -88,7 +88,7 @@ public class TelaCadastroTelefone {
 		frmNovoTelefone.getContentPane().add(lblMovel);
 		
 		checkBoxMovel = new JCheckBox("");
-		checkBoxMovel.setBounds(42, 57, 97, 23);
+		checkBoxMovel.setBounds(69, 57, 97, 23);
 		frmNovoTelefone.getContentPane().add(checkBoxMovel);
 		
 		lblDono = new JLabel("Dono:");
@@ -100,7 +100,7 @@ public class TelaCadastroTelefone {
 		
 		cbDono = new JComboBox(clienteCadastrados.toArray());
 		cbDono.setSelectedIndex(-1);
-		cbDono.setBounds(52, 86, 200, 22);
+		cbDono.setBounds(72, 87, 161, 22);
 		frmNovoTelefone.getContentPane().add(cbDono);
 		
 		btnSalvar = new JButton("Salvar");
