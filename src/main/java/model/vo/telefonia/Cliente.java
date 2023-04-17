@@ -87,13 +87,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		//return "Nome: " + nome + ", cpf: " + cpf + ", telefones: " + telefones + ", ativo: " + ativo
-			//	+ ", endereco: " + endereco + "";
-		return getClienteResumido();
-	}
-	
-	public String getClienteResumido() {
-		return nome + ", " + cpf + ", " + telefones + ", " + ativo;
+		return nome + "(" + cpf + ")";
 	}
 	
 }

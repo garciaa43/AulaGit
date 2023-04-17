@@ -82,8 +82,5 @@ private ClienteDAO dao = new ClienteDAO();
 		}
 	}
 
-	public List<Cliente> consultarTodosPorId() {
-		
-		return dao.consultarTodosPorId();
-	}
+	
 }
