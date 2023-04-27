@@ -13,7 +13,7 @@ import model.vo.telefonia.Cliente;
 import model.vo.telefonia.Endereco;
 
 public class ClienteDAO {
-
+	
 	public Cliente inserir(Cliente novoCliente) {
 		Connection conexao = Banco.getConnection();
 		String sql = " INSERT INTO CLIENTE(NOME, CPF, ID_ENDERECO, ATIVO) "
@@ -129,7 +129,7 @@ public class ClienteDAO {
 		try {
 			ResultSet resultado = query.executeQuery();
 			
-			if(resultado.next()) {
+			while(resultado.next()) {
 				Cliente clienteBuscado = montarClienteComResultadoDoBanco(resultado);
 				clientes.add(clienteBuscado);
 			}
@@ -211,8 +211,6 @@ public class ClienteDAO {
 		
 		return totalClientesDoEnderecoBuscado;
 	}
-	
-	
 }
 
 
