@@ -16,6 +16,16 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Tela de cadastro/edição de endereço
+ * 
+ * O atributo 'endereco' que indica o que será feito
+ * - está nulo: cadastro
+ * - já veio preenchido no construtor: edição
+ * 
+ * @author Vilmar César Pereira Júnior
+ *
+ */
 public class TelaCadastroEndereco {
 
 	private JFrame frmCadastroDeEndereco;
@@ -33,18 +43,17 @@ public class TelaCadastroEndereco {
 	private JButton btnSalvar;
 	private JComboBox cbEstado;
 	
-	//TODO chamar API ou backend futuramente
-	private String[] estados = {"PR", "RS", "SC"};
+	//Objeto usado para armazenar o endereço que será criado ou editado
 	private Endereco endereco;
 	
+	//TODO chamar API ou backend futuramente
+	private String[] estados = {"PR", "RS", "SC"};
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					//Inicia a tela com um endereço nulo
 					TelaCadastroEndereco window = new TelaCadastroEndereco(null);
 					window.frmCadastroDeEndereco.setVisible(true);
 				} catch (Exception e) {
@@ -154,6 +163,7 @@ public class TelaCadastroEndereco {
 						controller.atualizar(endereco);
 					}else {
 						controller.inserir(endereco);
+						limparTela();
 					}
 					JOptionPane.showMessageDialog(null, "Endereço:" + (edicao ? " atualizado " : " criado ") + "com sucesso!",
 														"Sucesso", JOptionPane.INFORMATION_MESSAGE);
@@ -166,6 +176,7 @@ public class TelaCadastroEndereco {
 		btnSalvar.setBounds(130, 170, 100, 23);
 		frmCadastroDeEndereco.getContentPane().add(btnSalvar);
 		
+		//Preenche os campos na tela (binding)
 		if(endereco != null) {
 			txtCep.setText(endereco.getCep());
 			txtRua.setText(endereco.getRua());
@@ -177,6 +188,15 @@ public class TelaCadastroEndereco {
 		}
 		
 		frmCadastroDeEndereco.setVisible(true);
-	
+	}
+
+	protected void limparTela() {
+		this.endereco = null;
+		txtCep.setText("");
+		txtRua.setText("");
+		txtNumero.setText("");
+		txtCidade.setText("");
+		txtBairro.setText("");
+		cbEstado.setSelectedItem(null);
 	}
 }
