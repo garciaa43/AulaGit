@@ -155,12 +155,12 @@ public class TelaCadastroTelefone {
 		txtTelefoneFixo = new JFormattedTextField(mascaraTelefoneFixo);
 		txtTelefoneFixo.setBackground(new Color(192, 192, 192));
 		txtTelefoneFixo.setForeground(new Color(255, 0, 255));
-		txtTelefoneFixo.setBounds(90, 60, 270, 20);
+		txtTelefoneFixo.setBounds(85, 57, 270, 20);
 		frmNovoTelefone.getContentPane().add(txtTelefoneFixo);
 		
 		txtTelefoneMovel = new JFormattedTextField(mascaraTelefoneMovel);
 		txtTelefoneMovel.setForeground(Color.BLUE);
-		txtTelefoneMovel.setBounds(90, 60, 270, 20);
+		txtTelefoneMovel.setBounds(85, 57, 270, 20);
 		txtTelefoneMovel.setVisible(false);
 		frmNovoTelefone.getContentPane().add(txtTelefoneMovel);
 		

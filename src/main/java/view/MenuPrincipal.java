@@ -104,6 +104,11 @@ public class MenuPrincipal {
 		menuBar.add(mnTelefone);
 		
 		JMenuItem mntmCadastroTelefone = new JMenuItem("Cadastro");
+		mntmCadastroTelefone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		mntmCadastroTelefone.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
 		mntmCadastroTelefone.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/icones/Colebemis-Feather-Edit-3.24.png")));
 		mnTelefone.add(mntmCadastroTelefone);
@@ -125,6 +130,14 @@ public class MenuPrincipal {
 		menuBar.add(mnEndereco);
 		
 		JMenuItem mntmCadastroEndereco = new JMenuItem("Cadastro");
+		mntmCadastroEndereco.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PainelCadastroEndereco painelCadastroEndereco = new PainelCadastroEndereco();
+				painelCadastroEndereco.setVisible(true);
+				frmSistemaDeTelefonia.setContentPane(painelCadastroEndereco);
+				painelCadastroEndereco.revalidate();
+			}
+		});
 		mntmCadastroEndereco.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F7, 0));
 		mntmCadastroEndereco.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/icones/Colebemis-Feather-Edit-3.24.png")));
 		mnEndereco.add(mntmCadastroEndereco);
