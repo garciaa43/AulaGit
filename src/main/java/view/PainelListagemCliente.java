@@ -26,6 +26,8 @@ import com.github.lgooddatepicker.components.DatePicker;
 import controller.ClienteController;
 import model.exception.ClienteComTelefoneException;
 import model.vo.telefonia.Cliente;
+import javax.swing.UIManager;
+import javax.swing.SwingConstants;
 
 public class PainelListagemCliente extends JPanel {
 	private JTable tblClientes;
@@ -73,6 +75,7 @@ public class PainelListagemCliente extends JPanel {
 	}
 	
 	public PainelListagemCliente() {
+		setBackground(new Color(255, 0, 128));
 		this.setLayout(null);
 
 		btnBuscar = new JButton("Buscar (em construção...)");
@@ -121,6 +124,8 @@ public class PainelListagemCliente extends JPanel {
 		this.add(lblNome);
 
 		txtNome = new JTextField();
+		txtNome.setHorizontalAlignment(SwingConstants.LEFT);
+		txtNome.setToolTipText("");
 		txtNome.setBounds(160, 20, 240, 28);
 		this.add(txtNome);
 		txtNome.setColumns(10);
@@ -179,6 +184,7 @@ public class PainelListagemCliente extends JPanel {
 		this.add(btnEditar);
 		
 		btnBuscarTodos = new JButton("Buscar todos");
+		btnBuscarTodos.setBackground(UIManager.getColor("Button.darkShadow"));
 		btnBuscarTodos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clientes = (ArrayList<Cliente>) controller.consultarTodos();

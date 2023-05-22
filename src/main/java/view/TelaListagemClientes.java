@@ -102,6 +102,7 @@ public class TelaListagemClientes {
 	 */
 	private void initialize() {
 		frmListagemDeClientes = new JFrame();
+		frmListagemDeClientes.getContentPane().setBackground(new Color(255, 0, 128));
 		frmListagemDeClientes.setTitle("Listagem de Clientes");
 		frmListagemDeClientes.setBounds(100, 100, 700, 600);
 		frmListagemDeClientes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

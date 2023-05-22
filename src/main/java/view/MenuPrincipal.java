@@ -71,6 +71,7 @@ public class MenuPrincipal {
 				painelCadastroCliente.setVisible(true);
 				frmSistemaDeTelefonia.setContentPane(painelCadastroCliente);
 				frmSistemaDeTelefonia.revalidate();
+				registrarCliqueVoltarPainelCadastroCliente();
 			}
 		});
 		mntmCadastroCliente.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0));
