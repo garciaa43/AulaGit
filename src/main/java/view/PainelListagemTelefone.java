@@ -4,18 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
+
 
 import controller.ClienteController;
 import controller.TelefoneController;
 import model.vo.telefonia.Cliente;
 import model.vo.telefonia.Telefone;
 
-import com.jgoodies.forms.layout.FormSpecs;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import com.privatejgoodies.forms.layout.ColumnSpec;
+import com.privatejgoodies.forms.layout.FormLayout;
+import com.privatejgoodies.forms.layout.FormSpecs;
+import com.privatejgoodies.forms.layout.RowSpec;
 
 public class PainelListagemTelefone extends JPanel {
 	private JTable tblTelefones;

@@ -1,10 +1,6 @@
 package view;
 
 import javax.swing.JPanel;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-
 import controller.ClienteController;
 import controller.EnderecoController;
 import model.exception.CampoInvalidoException;
@@ -13,12 +9,17 @@ import model.exception.EnderecoInvalidoException;
 import model.vo.telefonia.Cliente;
 import model.vo.telefonia.Endereco;
 
-import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.text.MaskFormatter;
+
+import com.privatejgoodies.forms.layout.ColumnSpec;
+import com.privatejgoodies.forms.layout.FormLayout;
+import com.privatejgoodies.forms.layout.FormSpecs;
+import com.privatejgoodies.forms.layout.RowSpec;
+
 import javax.swing.JFormattedTextField;
 import javax.swing.JComboBox;
 
